@@ -4,7 +4,8 @@
 services:
   db:
     build:
-      context: .
+      context: ..
+      no_cache: true
     environment:
       POSTGRES_DB: 'mydb'
       POSTGRES_USER: 'myuser'
