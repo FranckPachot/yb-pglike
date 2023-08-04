@@ -1,0 +1,31 @@
+#
+# Here is a docker compose to test the image built from here
+#
+services:
+  db:
+    build:
+      context: https://github.com/FranckPachot/yb-pglike.git
+      no_cache: true
+    environment:
+      POSTGRES_DB: 'mydb'
+      POSTGRES_USER: 'myuser'
+      POSTGRES_PASSWORD: 'mypass'
+    expose:
+    - 5432
+    - 15433
+    ports:
+      - 5432:5432
+      - 15433:15433
+    restart: always
+  app:
+    image: postgres
+    environment:
+      PGDATABASE: 'mydb'
+      PGUSER: 'myuser'
+      PGPASSWORD: 'mypass'
+    command: pgbench -i -h db && pgbench -h db
+    depends_on:
+      db:
+        condition: service_healthy
+     
+      
