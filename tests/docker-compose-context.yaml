@@ -22,7 +22,7 @@ services:
       PGDATABASE: 'mydb'
       PGUSER: 'myuser'
       PGPASSWORD: 'mypass'
-    command: bash -c 'pgbench -iI dtgpf -h db && pgbench -h db'
+    command: bash -c 'pgbench -iI dtgpf -h db -U myuser && pgbench -h db  -U myuser'
     depends_on:
       db:
         condition: service_healthy

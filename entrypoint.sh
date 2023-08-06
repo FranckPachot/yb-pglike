@@ -11,6 +11,7 @@ cat    > /docker-entrypoint-initdb.d/00000000.sql <<SQL
 create database "${POSTGRES_DB:-$POSTGRES_USER}";
 create user "${POSTGRES_USER}";
 alter user "${POSTGRES_USER}" password '${POSTGRES_PASSWORD}'
+grant create on database "${POSTGRES_DB:-$POSTGRES_USER}" to "${POSTGRES_USER}";
 SQL
 
 yugabyted start $* \
