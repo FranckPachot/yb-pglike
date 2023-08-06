@@ -14,7 +14,6 @@ services:
     - 5432
     - 15433
     ports:
-      - 5432:5432
       - 15433:15433
     restart: always
   app:
@@ -23,7 +22,7 @@ services:
       PGDATABASE: 'mydb'
       PGUSER: 'myuser'
       PGPASSWORD: 'mypass'
-    command: pgbench -i -h db && pgbench -h db
+    command: bash -c 'pgbench -iI dtgpf -h db && pgbench -h db'
     depends_on:
       db:
         condition: service_healthy
