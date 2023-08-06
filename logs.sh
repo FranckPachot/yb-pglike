@@ -1,3 +1,3 @@
 DIR=${PGDATA:-/var/lib/postgresql/data}
 cd $DIR/logs/tserver
-tail -F $(ls -r postgres* | head -1)
+tail -n 10000 -F $(ls -r postgres* | head -1)

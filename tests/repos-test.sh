@@ -18,7 +18,7 @@ sed -e 's!context: compose/postgres!context: '"${img}"'!' -i docker-compose.yaml
 docker-compose -p aws-dataall up
 ;;
 
-metabase) # to be tested
+metabase) # nothing happens on sign in
 git clone https://github.com/entrepreneur-interet-general/demo_metabase_postgres.git
 cd ./demo_metabase_postgres &&
 sed -e 's?image: postgres.*?build: '"${img}"'?' -i docker-compose.yml &&
