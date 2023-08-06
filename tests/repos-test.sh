@@ -18,6 +18,18 @@ sed -e 's!context: compose/postgres!context: '"${img}"'!' -i docker-compose.yaml
 docker-compose -p aws-dataall up
 ;;
 
+metabase) # to be tested
+git clone https://github.com/entrepreneur-interet-general/demo_metabase_postgres.git
+cd ./demo_metabase_postgres &&
+sed -e 's?image: postgres.*?build: '"${img}"'?' -i docker-compose.yml &&
+cat docker-compose.yml &&
+echo "
+./download_data.sh
+docker-compose exec postgres bash /home/data/load_table.sh
+" &&
+docker-compose -f docker-compose.yml up 
+;;
+
 odoo) # needs listen/notify
 git clone https://github.com/choboellobo/odoo-16.git
 cd ./odoo-16 &&
