@@ -5,7 +5,7 @@ To run with it, replace the postgres image with this one.
 
 For example, in docker compose, replace 
 ```
-image: postgres
+    image: postgres
 ``` 
 with:
 ```
