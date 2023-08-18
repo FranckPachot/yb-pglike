@@ -32,6 +32,9 @@ A a federated blogging engine, based on ActivityPub.
 A fast, bloat-free comments platform
 - **Firefly III** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/firefly))
 A personal finances manager
+- **HedgeDoc** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/hedgedoc))
+Was CodiMD: create real-time collaborative markdown notes
+
 
 
   

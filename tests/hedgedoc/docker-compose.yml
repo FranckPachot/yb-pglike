@@ -1,0 +1,23 @@
+services:
+  app:
+    image: linuxserver/hedgedoc:${VERSION:-1.8.2-ls25}
+    environment:
+      - CMD_ALLOW_FREEURL=${CMD_ALLOW_FREEURL:-true}
+      - CMD_ALLOW_EMAIL_REGISTER=${CMD_ALLOW_EMAIL_REGISTER:-true}
+      - CMD_DEFAULT_PERMISSION=${CMD_DEFAULT_PERMISSION:-editable}
+      - CMD_DB_URL=postgres://hedgedoc:myp@ssw0rd@yb:5432/hedgedoc
+      - CMD_URL_ADDPORT=${CMD_URL_ADDPORT:-false}
+      - CMD_PROTOCOL_USESSL=${CMD_PROTOCOL_USESSL:-true}
+      - CMD_SESSION_SECRET=${CMD_SESSION_SECRET:-myhedgedocs3cr3t}
+    ports:
+      - "3000:3000"
+    depends_on:
+      yb:
+        condition: service_healthy
+
+  yb:
+    build: ../..
+    environment:
+      - POSTGRES_USER=hedgedoc
+      - POSTGRES_PASSWORD=myp@ssw0rd
+      - POSTGRES_DB=hedgedoc
