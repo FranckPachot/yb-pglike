@@ -26,7 +26,7 @@ Here are some applications I have tested, replacing the PostgreSQL image by this
 
 - Jira `atlassian/jira-software:latest` works on YugabyteDB with colocation by mentioning JIRA_DB_URL
 
-### With PR submitted
+### Tested, working, and PR submitted
 
 - https://github.com/awslabs/aws-dataall
 A modern data marketplace that makes collaboration among diverse users (like business, analysts and engineers) easier, increasing efficiency and agility in data projects on AWS.
@@ -36,7 +36,7 @@ A modern data marketplace that makes collaboration among diverse users (like bus
 Wiki.js | A modern and powerful wiki app built on Node.js
 [^1] [[PR]](https://github.com/requarks/wiki/pull/6633)
 
-### Tests waiting for open issues
+### Tests waiting for open issues in YugabyteDB
 
 - Redmine https://github.com/FranckPachot/yb-pglike/tree/main/tests/redmine [^1]
 A flexible project management web application written using Ruby on Rails framework.
