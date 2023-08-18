@@ -22,6 +22,10 @@ With this single-node image, the goal is to have the same behavior as PostgreSQL
 
 Here are some applications I have tested, replacing the PostgreSQL image by this YugabyteDB image. You can do the same, please let me know to add to the list.
 
+### Applications reported to work
+
+- Jira `atlassian/jira-software:latest` works on YugabyteDB with colocation
+
 ### With docker compose example
 
 ### With PR submitted
@@ -36,10 +40,10 @@ Wiki.js | A modern and powerful wiki app built on Node.js
 
 ### Tests waiting for open issues
 
-- Redmine ./tests/redmine [^1]
+- Redmine https://github.com/FranckPachot/yb-pglike/tree/main/tests/redmine [^1]
 A flexible project management web application written using Ruby on Rails framework.
 
-- MAttermost [^3] 
+- Mattermost https://github.com/FranckPachot/yb-pglike/blob/main/tests/mattermost/docker-compose.yml [^3] 
 Open source platform that provides secure collaboration for technical and operational teams that work in environments with complex nation-state level security and trust requirements.
 
 
