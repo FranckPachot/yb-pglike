@@ -30,6 +30,14 @@ docker-compose exec postgres bash /home/data/load_table.sh
 docker-compose -p $1 -f docker-compose.yml up 
 ;;
 
+jira) # 
+git clone https://github.com/johanneshiry/jira-postgresql-docker.git
+cd ./jira-postgresql-docker &&
+sed -e 's?image: postgres.*?build: '"${img}"'?' -i docker-compose.yml &&
+cat docker-compose.yml &&
+docker-compose -p $1 -f docker-compose.yml up 
+;;
+
 
 metabase) # nothing happens on sign in
 git clone https://github.com/entrepreneur-interet-general/demo_metabase_postgres.git
