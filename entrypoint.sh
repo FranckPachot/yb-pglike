@@ -12,6 +12,8 @@ create database "${POSTGRES_DB:-$POSTGRES_USER}" with colocation = ${YB_COLOCATI
 create user "${POSTGRES_USER}";
 alter user "${POSTGRES_USER}" password '${POSTGRES_PASSWORD}';
 grant create on database "${POSTGRES_DB:-$POSTGRES_USER}" to "${POSTGRES_USER}";
+-- in case the application needs to create an extension
+grant yb_extension to "${POSTGRES_USER}";
 SQL
 
 # because if issue #17929 we may need to disable colocation
@@ -22,7 +24,8 @@ yugabyted start $* \
  --tserver_flags=flagfile=/tmp/config.flags \
  --master_flags=flagfile=/tmp/config.flags \
  --initial_scripts_dir=/docker-entrypoint-initdb.d \
- --base_dir=${PGDATA:-/var/lib/postgresql/data} 
+ --base_dir=${PGDATA:-/var/lib/postgresql/data} |
+grep -vE '^([/-\] ).*[.][.][.]$'
 
 # stop to restart on port 5432
 yugabyted stop \
