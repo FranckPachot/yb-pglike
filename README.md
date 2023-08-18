@@ -24,7 +24,8 @@ Here are some applications I have tested, replacing the PostgreSQL image by this
 
 ### Tested and working
 
-- **Jira** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/jira)
+- **Jira** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/jira))
+  
 An agile project management tool used by teams to plan, track, release and support software
 
 ### Tested, working, and PR submitted
