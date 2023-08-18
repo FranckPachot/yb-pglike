@@ -2,7 +2,7 @@
 A flexible project management web application written using Ruby on Rails framework.
 [^1] [[PR]](https://github.com/requarks/wiki/pull/6633)
 
-Error even without colocation
+_Fails on serialzable even without colocation and with read committed_
 
 ```
 2023-08-18 15:02:55.790 UTC [538] LOG:  duration: 0.556 ms  plan:
