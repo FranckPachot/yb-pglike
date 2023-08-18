@@ -1,0 +1,27 @@
+# DOMAIN=example.com docker stack deploy -c redmine.yml redmine
+
+version: '3.8'
+
+services:
+  web:
+    image: redmine:${VERSION:-4.2.2-alpine}
+    environment:
+      - REDMINE_SECRET_KEY_BASE=${REDMINE_SECRET_KEY_BASE:-supersecretkey}
+      - REDMINE_DB_POSTGRES=yb
+      - REDMINE_DB_USERNAME=redmine
+      - REDMINE_DB_DATABASE=redmine
+      - REDMINE_DB_PASSWORD=myp@ssw0rd
+    ports:
+      - "3000:3000"
+    depends_on:
+      yb:
+        condition: service_healthy
+
+  yb:
+    build: ../..
+    environment:
+      - POSTGRES_DB=redmine
+      - POSTGRES_USER=redmine
+      - POSTGRES_PASSWORD=myp@ssw0rd
+      - YB_COLOCATION=false
+

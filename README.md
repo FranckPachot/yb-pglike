@@ -22,6 +22,8 @@ With this single-node image, the goal is to have the same behavior as PostgreSQL
 
 Here are some applications I have tested, replacing the PostgreSQL image by this YugabyteDB image. You can do the same, please let me know to add to the list.
 
+### With docker compose example
+
 ### With PR submitted
 
 - https://github.com/awslabs/aws-dataall
