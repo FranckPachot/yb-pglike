@@ -1,0 +1,21 @@
+
+services:
+  app:
+    image: atlassian/jira-software:latest
+    environment:
+      - JIRA_DB_PASSWORD=jira
+      - JIRA_DB_USERNAME=jira
+      - JIRA_DB_URL=jdbc:postgresql://yb/jira
+    ports:
+      - "8080:8080"
+    depends_on:
+      yb:
+        condition: service_healthy
+
+  yb:
+    build: ../..
+    environment:
+      - POSTGRES_DB=jira
+      - POSTGRES_USER=jira
+      - POSTGRES_PASSWORD=jira
+
