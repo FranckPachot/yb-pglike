@@ -34,8 +34,19 @@ A modern data marketplace that makes collaboration among diverse users (like bus
 Wiki.js | A modern and powerful wiki app built on Node.js
 [^1] [[PR]](https://github.com/requarks/wiki/pull/6633)
 
+### Tests waiting for open issues
+
+- Redmine ./tests/redmine [^1]
+A flexible project management web application written using Ruby on Rails framework.
+
+- MAttermost [^3] 
+Open source platform that provides secure collaboration for technical and operational teams that work in environments with complex nation-state level security and trust requirements.
+
+
+
 
 [^1]: TODO: set colocated to true when [#17929](https://github.com/yugabyte/yugabyte-db/issues/17929) is fixed
 [^2]: Application requires no gap sequences (`ysql_sequence_cache_minval=1`)
+[^3]: DROP CONSTRAINT IF EXISTS fails [#14566](https://github.com/yugabyte/yugabyte-db/issues/14566)
 
 
