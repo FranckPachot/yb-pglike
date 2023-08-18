@@ -10,7 +10,7 @@ mkdir -p /docker-entrypoint-initdb.d
 cat    > /docker-entrypoint-initdb.d/00000000.sql <<SQL
 create database "${POSTGRES_DB:-$POSTGRES_USER}" with colocation = ${YB_COLOCATION:-true};
 create user "${POSTGRES_USER}";
-alter user "${POSTGRES_USER}" password '${POSTGRES_PASSWORD}'
+alter user "${POSTGRES_USER}" password '${POSTGRES_PASSWORD}';
 grant create on database "${POSTGRES_DB:-$POSTGRES_USER}" to "${POSTGRES_USER}";
 SQL
 
