@@ -4,6 +4,7 @@
 
 # postgres-like (range indexes) without distribution
 --ysql_colocate_database_by_default=true
+
 # same default as PostgreSQL
 --ysql_sequence_cache_minval=1
 
