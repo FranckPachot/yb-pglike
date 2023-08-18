@@ -1,0 +1,36 @@
+services:
+  server:
+    image: plumeorg/plume:${VERSION:-0.7.2}
+    command:
+      - /bin/sh
+      - -c
+      - |
+        apt update
+        apt install -y wget
+        wget -O /app/.env https://docs.joinplu.me/docker.sample.env
+        plm migration run
+        plm search init
+        plm instance new -d $$BASE_URL -n $$INSTANCE_NAME
+        plm users new -n 'admin' -N 'admin' -b 'Administrateur' -e $$ADMIN_EMAIL -p $$ADMIN_PASSWORD --admin
+        plume
+    ports:
+     - 7878:7878
+    environment:
+      - BASE_URL=${DOMAIN:-plume.localhost}
+      - MAIL_SERVER=${MAIL_SERVER:-example.org}
+      - ROCKET_SECRET_KEY=${ROCKET_SECRET_KEY:-Hw5KPcdin+w8YNvUB9/0ZQgf1N5PVnPOnj4fGTBcgF0=}
+      - INSTANCE_NAME=${INSTANCE_NAME:-Plume}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@domain.name}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-myp@ssw0rd}
+      - DATABASE_URL=postgres://plume:passw0rd@yb:5432/plume
+    depends_on:
+      yb:
+        condition: service_healthy
+
+  yb:
+    build: ../..
+    environment:
+      - POSTGRES_DB=plume
+      - POSTGRES_USER=plume
+      - POSTGRES_PASSWORD=passw0rd
+

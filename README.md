@@ -25,6 +25,7 @@ Here are some applications I have tested, replacing the PostgreSQL image by this
 ### Tested and working
 
 - **Jira** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/jira))
+- **Plume** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/plume))
   
 An agile project management tool used by teams to plan, track, release and support software
 
