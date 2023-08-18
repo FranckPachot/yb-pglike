@@ -28,6 +28,8 @@ Here are some applications I have tested, replacing the PostgreSQL image by this
 An agile project management tool used by teams to plan, track, release and support software
 - **Plume** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/plume))
 A a federated blogging engine, based on ActivityPub. 
+- **Commento** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/commento))
+A fast, bloat-free comments platform
   
 
 ### Tested, working, and PR submitted

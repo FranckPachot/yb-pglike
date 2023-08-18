@@ -1,0 +1,23 @@
+
+services:
+  server:
+    image: registry.gitlab.com/commento/commento:${VERSION:-latest}
+    environment:
+      - COMMENTO_ORIGIN=localhost
+      - COMMENTO_PORT=8080
+      - COMMENTO_POSTGRES=postgres://commento:myp@ssw0rd@yb:5432/commento?sslmode=disable
+      #- COMMENTO_FORBID_NEW_OWNERS=${COMMENTO_FORBID_NEW_OWNERS:-false}
+      #- COMMENTO_SMTP_HOST=${SMTP_HOST:-smtp.example.com}
+      #- COMMENTO_SMTP_PORT=${SMTP_PORT:-587}
+      #- COMMENTO_SMTP_USERNAME=${SMTP_USERNAME:-noreply@example.com}
+      #- COMMENTO_SMTP_PASSWORD=${SMTP_PASSWORD:-myp@ssw0rd}
+      #- COMMENTO_SMTP_FROM_ADDRESS=${SMTP_FROM:-noreply@example.com}
+    ports:
+      - 8080:8080
+
+  yb:
+    build: ../..
+    environment:
+      - POSTGRES_DB=commento
+      - POSTGRES_USER=commento
+      - POSTGRES_PASSWORD=myp@ssw0rd
