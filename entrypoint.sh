@@ -45,6 +45,10 @@ echo "
 "
 yugabyted start $* \
  --ysql_port=5432 \
- --background=false \
+ --background=true \
  --base_dir=${PGDATA:-/var/lib/postgresql/data} 
+
+/usr/local/bin/logs.sh
+
+
 
