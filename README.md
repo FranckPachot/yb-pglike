@@ -30,6 +30,10 @@ An agile project management tool used by teams to plan, track, release and suppo
 A a federated blogging engine, based on ActivityPub. 
 - **Commento** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/commento))
 A fast, bloat-free comments platform
+- **Firefly III** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/firefly))
+A personal finances manager
+
+
   
 
 ### Tested, working, and PR submitted
