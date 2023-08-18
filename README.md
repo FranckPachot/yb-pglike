@@ -16,7 +16,7 @@ with:
 
 ## Reason
 
-With this single-node image, the goal is to have the same behavior as PostgreSQL. There are some advantages: YugabyteDB doesn't need VACUUM and solves many related problems (see [Which PostgreSQL problems are solved with YugabyteDB](https://dev.to/yugabyte/which-postgresql-problems-are-solved-with-yugabytedb-2gm)). For production, simply add two additional replicas (same command with additional `--join=` with the fully qualified address of the first node) and it becaomes resilient to any node failure. You can also use a managed sevice on 
+With this single-node image, the goal is to have the same behavior as PostgreSQL. There are some advantages: YugabyteDB doesn't need VACUUM and solves many related problems (see [Which PostgreSQL problems are solved with YugabyteDB](https://dev.to/yugabyte/which-postgresql-problems-are-solved-with-yugabytedb-2gm)). For production, simply add two additional replicas (same command with additional `--join=` with the fully qualified address of the first node) and it become resilient to any node failure. You can also use a managed sevice on 
 
 ## List of applications validated with this docker image or similar config
 
