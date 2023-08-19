@@ -1,0 +1,23 @@
+services:
+  wiki:
+    image: requarks/wiki:${VERSION:-2}
+    environment:
+      - DB_TYPE=postgres
+      - DB_HOST=yb
+      - DB_PORT=5432
+      - DB_USER=wikijs
+      - DB_PASS=myp@ssw0rd
+      - DB_NAME=wiki
+    ports:
+      - "3000:3000"
+    depends_on:
+      yb:
+        condition: service_healthy
+
+  yb:
+    build: ../..
+    environment:
+      - POSTGRES_USER=wikijs
+      - POSTGRES_PASSWORD=myp@ssw0rd
+      - POSTGRES_DB=wiki
+      - YB_COLOCATION=false

@@ -36,10 +36,8 @@ A personal finances manager
 Was CodiMD: create real-time collaborative markdown notes
 - **NocoBase** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocobase))
 A scalability-first, open-source no-code/low-code platform to build internal tools.
-
-
-
-  
+- **Wiki.js** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/wikijs)) [^1]
+A modern and powerful wiki app built on Node.js
 
 ### Tested, working, and PR submitted
 
@@ -62,7 +60,7 @@ Open source platform that provides secure collaboration for technical and operat
 
 
 
-[^1]: TODO: set colocated to true when [#17929](https://github.com/yugabyte/yugabyte-db/issues/17929) is fixed
+[^1]: set colocated to true when [#17929](https://github.com/yugabyte/yugabyte-db/issues/17929) is fixed
 [^2]: Application requires no gap sequences (`ysql_sequence_cache_minval=1`)
 [^3]: DROP CONSTRAINT IF EXISTS fails [#14566](https://github.com/yugabyte/yugabyte-db/issues/14566)
 
