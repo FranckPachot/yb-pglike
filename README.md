@@ -38,7 +38,7 @@ Was CodiMD: create real-time collaborative markdown notes
 A scalability-first, open-source no-code/low-code platform to build internal tools.
 - **Wiki.js** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/wikijs)) [^1]
 A modern and powerful wiki app built on Node.js
-- **NocoDB** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocodb)) [^1] [^4] 
+- **NocoDB** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocodb)) [^1] [^4]
 An Open Source Alternative to Airtable
 
 ### Tested, working, and PR submitted
@@ -62,9 +62,9 @@ Open source platform that provides secure collaboration for technical and operat
 
 
 
-[^1]: set colocated to true when [#17929](https://github.com/yugabyte/yugabyte-db/issues/17929) is fixed
-[^2]: Application requires no gap sequences (`ysql_sequence_cache_minval=1`)
-[^3]: DROP CONSTRAINT IF EXISTS fails [#14566](https://github.com/yugabyte/yugabyte-db/issues/14566)
-[^4]: queries on catalog are slow [#7745](https://github.com/yugabyte/yugabyte-db/issues/7745)
+[^1]: set colocated to true when [#17929](https://github.com/yugabyte/yugabyte-db/issues/17929) is fixed.
+[^2]: Application requires no gap sequences (`ysql_sequence_cache_minval=1`).
+[^3]: DROP CONSTRAINT IF EXISTS fails [#14566](https://github.com/yugabyte/yugabyte-db/issues/14566).
+[^4]: queries on catalog are slow [#7745](https://github.com/yugabyte/yugabyte-db/issues/7745).
 
 
