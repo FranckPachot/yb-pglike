@@ -34,6 +34,8 @@ A fast, bloat-free comments platform
 A personal finances manager
 - **HedgeDoc** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/hedgedoc))
 Was CodiMD: create real-time collaborative markdown notes
+- **NocoBase** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocobase))
+A scalability-first, open-source no-code/low-code platform to build internal tools.
 
 
 
