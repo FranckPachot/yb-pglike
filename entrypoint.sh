@@ -16,6 +16,10 @@ grant create on database "${POSTGRES_DB:-$POSTGRES_USER}" to "${POSTGRES_USER}";
 grant yb_extension to "${POSTGRES_USER}";
 SQL
 
+# set parameters for the database
+sed -e "/^set /s/^/alter database \"${POSTGRES_DB:-$POSTGRES_USER}\" /" \
+ /tmp/parameters.sql >> /docker-entrypoint-initdb.d/00000000.sql
+
 # because if issue #17929 we may need to disable colocation
 sed -e "/--ysql_colocate_database_by_default=/s/true/${YB_COLOCATION:-true}/" /tmp/config.flags
 

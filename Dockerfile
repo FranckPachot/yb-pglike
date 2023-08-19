@@ -3,6 +3,7 @@ COPY entrypoint.sh /usr/local/bin/
 COPY healthcheck.sh /usr/local/bin/
 COPY logs.sh /usr/local/bin/
 COPY config.flags /tmp/
+COPY parameters.sql /tmp/
 RUN chmod 777 /usr/local/bin/entrypoint.sh
 RUN chmod 777 /usr/local/bin/healthcheck.sh
 RUN chmod 777 /usr/local/bin/logs.sh
