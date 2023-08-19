@@ -36,35 +36,35 @@ A personal finances manager
 Was CodiMD: create real-time collaborative markdown notes
 - **NocoBase** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocobase))
 A scalability-first, open-source no-code/low-code platform to build internal tools.
-- **Wiki.js** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/wikijs)) [^1]
+- **Wiki.js** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/wikijs)) [^17929]
 A modern and powerful wiki app built on Node.js
-- **NocoDB** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocodb)) [^1] [^4]
+- **NocoDB** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocodb)) [^17929] [^7745]
 An Open Source Alternative to Airtable
 
 ### Tested, working, and PR submitted
 
 - https://github.com/awslabs/aws-dataall
 A modern data marketplace that makes collaboration among diverse users (like business, analysts and engineers) easier, increasing efficiency and agility in data projects on AWS.
-[^2] [[PR]](https://github.com/awslabs/aws-dataall/pull/608)
+[^6041] [[PR]](https://github.com/awslabs/aws-dataall/pull/608)
 
 - https://github.com/requarks/wiki
 Wiki.js | A modern and powerful wiki app built on Node.js
-[^1] [[PR]](https://github.com/requarks/wiki/pull/6633)
+[^17929] [[PR]](https://github.com/requarks/wiki/pull/6633)
 
 ### Tests waiting for open issues in YugabyteDB
 
-- Redmine https://github.com/FranckPachot/yb-pglike/tree/main/tests/redmine [^1]
+- Redmine https://github.com/FranckPachot/yb-pglike/tree/main/tests/redmine [^17929]
 A flexible project management web application written using Ruby on Rails framework.
 
-- Mattermost https://github.com/FranckPachot/yb-pglike/blob/main/tests/mattermost/docker-compose.yml [^3] 
+- Mattermost https://github.com/FranckPachot/yb-pglike/blob/main/tests/mattermost/docker-compose.yml [^14566] 
 Open source platform that provides secure collaboration for technical and operational teams that work in environments with complex nation-state level security and trust requirements.
 
 
 
 
-[^1]: set colocated to true when [#17929](https://github.com/yugabyte/yugabyte-db/issues/17929) is fixed.
-[^2]: Application requires no gap sequences (`ysql_sequence_cache_minval=1`).
-[^3]: DROP CONSTRAINT IF EXISTS fails [#14566](https://github.com/yugabyte/yugabyte-db/issues/14566).
-[^4]: queries on catalog are slow [#7745](https://github.com/yugabyte/yugabyte-db/issues/7745).
+[^17929]: set colocated to true when [#17929](https://github.com/yugabyte/yugabyte-db/issues/17929) is fixed.
+[^6041]: Application requires no gap sequences (`ysql_sequence_cache_minval=1`).
+[^14566]: DROP CONSTRAINT IF EXISTS fails [#14566](https://github.com/yugabyte/yugabyte-db/issues/14566).
+[^7745]: queries on catalog are slow [#7745](https://github.com/yugabyte/yugabyte-db/issues/7745).
 
 
