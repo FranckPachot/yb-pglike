@@ -40,12 +40,13 @@ A scalability-first, open-source no-code/low-code platform to build internal too
 A modern and powerful wiki app built on Node.js
 - **NocoDB** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocodb)) [^17929] [^7745]
 An Open Source Alternative to Airtable
+- **Kine** [^6041] Alternative to Etcd
 
 ### Tested, working, and PR submitted
 
 - https://github.com/awslabs/aws-dataall
 A modern data marketplace that makes collaboration among diverse users (like business, analysts and engineers) easier, increasing efficiency and agility in data projects on AWS.
-[^6041] [[PR]](https://github.com/awslabs/aws-dataall/pull/608)
+[[PR]](https://github.com/awslabs/aws-dataall/pull/608)
 
 - https://github.com/requarks/wiki
 Wiki.js | A modern and powerful wiki app built on Node.js
