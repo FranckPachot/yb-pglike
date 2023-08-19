@@ -38,7 +38,7 @@ Was CodiMD: create real-time collaborative markdown notes
 A scalability-first, open-source no-code/low-code platform to build internal tools.
 - **Wiki.js** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/wikijs)) [^17929]
 A modern and powerful wiki app built on Node.js
-- **NocoDB** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocodb)) [^17929] [^7745]
+- **NocoDB** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocodb)) [^17929] (Slow [^7745])
 An Open Source Alternative to Airtable
 
 ### Tested, working, and PR submitted
