@@ -42,6 +42,8 @@ A scalability-first, open-source no-code/low-code platform to build internal too
 A modern and powerful wiki app built on Node.js
 - **NocoDB** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/nocodb)) [^17929] (Slow [^7745])
 An Open Source Alternative to Airtable
+- **Umani** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/umani)) 
+A simple, fast, privacy-focused alternative to Google Analytics.
 - **Kine** [^6041] Alternative to Etcd
 
 ### Tested, working, and PR submitted

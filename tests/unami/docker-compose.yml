@@ -1,0 +1,27 @@
+
+services:
+
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    container_name: umami
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://umami:umami@yb:5432/umami
+      DATABASE_TYPE: postgresql
+      HASH_SALT: Q6VsXKweJK6sn1yk6euTWFV2U2WGjN
+    depends_on:
+      yb:
+        condition: service_healthy
+    ports:
+      - 3000:3000
+
+  yb:
+    build: ../..
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: umami
+    volumes:
+      - ./schema.postgresql.sql:/docker-entrypoint-initdb.d/schema.postgresql.sql:ro
+
+
