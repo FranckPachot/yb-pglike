@@ -1,0 +1,34 @@
+
+services:
+
+  invidious:
+    image: flourgaz/invidious
+    restart: unless-stopped
+    depends_on:
+      yb:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      INVIDIOUS_CONFIG: |
+        channel_threads: 1
+        check_tables: true
+        feed_threads: 1
+        db:
+          user: kemal
+          password: kemal
+          host: yb
+          port: 5432
+          dbname: invidious
+        full_refresh: false
+        https_only: false
+        external_port: 443
+        domain: yt.example.com
+
+  yb:
+    build: ../..
+    environment:
+      POSTGRES_DB: invidious
+      POSTGRES_PASSWORD: kemal
+      POSTGRES_USER: kemal
+

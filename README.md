@@ -44,6 +44,8 @@ A modern and powerful wiki app built on Node.js
 An Open Source Alternative to Airtable
 - **Umani** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/umani)) 
 A simple, fast, privacy-focused alternative to Google Analytics.
+- **invidious** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/invidious)) 
+An alternative front-end to YouTube
 - **Kine** [^6041] Alternative to Etcd
 
 ### Tested, working, and PR submitted
