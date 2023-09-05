@@ -76,6 +76,6 @@ open-source status page system
 [^6041]: Application requires no gap sequences (`ysql_sequence_cache_minval=1`).
 [^14566]: DROP CONSTRAINT IF EXISTS fails [#14566](https://github.com/yugabyte/yugabyte-db/issues/14566).
 [^7745]: queries on catalog are slow [#7745](https://github.com/yugabyte/yugabyte-db/issues/7745).
-[^18994]: SQLSTATE[XX000]: Internal error: 7 ERROR:  timed out waiting for postgres backends to catch up
+[^18994]: SQLSTATE[XX000]: Internal error: 7 ERROR:  timed out waiting for postgres backends to catch up [#18994](https://github.com/yugabyte/yugabyte-db/issues/18994)
 
 
