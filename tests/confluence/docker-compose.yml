@@ -1,0 +1,33 @@
+
+
+services:
+
+  confluence:
+    image: atlassian/confluence-server
+    container_name: confluence
+    environment:
+      - TZ=Europe/Dublin
+      - JVM_MINIMUM_MEMORY=2048m
+      - JVM_MAXIMUM_MEMORY=8192m
+      - ATL_JDBC_USER=dbuser1
+      - ATL_JDBC_PASSWORD=123456
+      - ATL_DB_TYPE=postgresql
+      - ATL_PROXY_NAME=confluence.example.com
+      - ATL_PROXY_PORT=443
+      - ATL_TOMCAT_SCHEME=https
+      - ATL_TOMCAT_SECURE=true
+
+    ports:
+      - 8090:8090
+      - 8091:8091
+    restart: unless-stopped
+    depends_on:
+      yb:
+        condition: service_healthy
+
+  yb:
+    build: ../..
+    environment:
+      - POSTGRES_USER=dbuser1
+      - POSTGRES_PASSWORD=123456
+
