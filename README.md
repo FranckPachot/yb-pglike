@@ -66,6 +66,9 @@ A flexible project management web application written using Ruby on Rails framew
 - Mattermost https://github.com/FranckPachot/yb-pglike/blob/main/tests/mattermost/docker-compose.yml [^14566] 
 Open source platform that provides secure collaboration for technical and operational teams that work in environments with complex nation-state level security and trust requirements.
 
+- Cachet https://github.com/FranckPachot/yb-pglike/tree/main/tests/cachethq [^18994]
+open-source status page system 
+
 
 
 
@@ -73,5 +76,6 @@ Open source platform that provides secure collaboration for technical and operat
 [^6041]: Application requires no gap sequences (`ysql_sequence_cache_minval=1`).
 [^14566]: DROP CONSTRAINT IF EXISTS fails [#14566](https://github.com/yugabyte/yugabyte-db/issues/14566).
 [^7745]: queries on catalog are slow [#7745](https://github.com/yugabyte/yugabyte-db/issues/7745).
+[^18994]: SQLSTATE[XX000]: Internal error: 7 ERROR:  timed out waiting for postgres backends to catch up
 
 

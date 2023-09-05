@@ -1,0 +1,22 @@
+services:
+  cachet:
+    image: cachethq/docker:latest
+    environment:
+           - DB_DRIVER=pgsql
+           - DB_HOST=yb
+           - DB_DATABASE=franck
+           - DB_USERNAME=franck
+           - DB_PASSWORD=franck
+           - APP_KEY=base64:tixFLbMoKffHKfUO1uEK9cGdpJxHYP7uCAp0lwwzEtM=
+    ports:
+           - 3123:8000
+    depends_on:
+      yb:
+        condition: service_healthy
+
+  yb:
+    build: ../..
+    environment:
+      - POSTGRES_DB=franck
+      - POSTGRES_USER=franck
+      - POSTGRES_PASSWORD=franck
