@@ -1,0 +1,32 @@
+services:
+  postgres:
+    build: https://github.com/FranckPachot/yb-pglike.git
+    #environment:
+    #  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-abc}
+    #networks:
+    #  - internal
+  lsmb:
+    image: ghcr.io/ledgersmb/ledgersmb:1.10
+    networks:
+      - internal
+      - default
+    ports:
+      - "5762:5762"
+    environment:
+      LSMB_WORKERS: ${LSMB_WORKERS:-5}
+      # LSMB_MAIL_SMTPHOST:
+      # LSMB_MAIL_SMTPPORT:
+      # LSMB_MAIL_SMTPTLS:
+      # LSMB_MAIL_SMTPSENDER_HOSTNAME:
+      # LSMB_MAIL_SMTPUSER:
+      # LSMB_MAIL_SMTPPASS:
+      # LSMB_MAIL_SMTPAUTHMECH:
+      #
+      # PROXY_IP: 172.17.0.1/12
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+
+networks:
+  internal:
