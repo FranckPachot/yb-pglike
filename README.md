@@ -26,7 +26,7 @@ Here are some applications I have tested, replacing the PostgreSQL image by this
 
 - **Jira** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/jira))
 An agile project management tool used by teams to plan, track, release and support software
-- **Confluence ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/confluence))
+- **Confluence** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/confluence))
 A collaborative platform used for creating, sharing, and organizing content within teams and organizations
 - **Plume** ([docker compose](https://github.com/FranckPachot/yb-pglike/tree/main/tests/plume))
 A a federated blogging engine, based on ActivityPub. 
