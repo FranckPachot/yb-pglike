@@ -3,7 +3,7 @@
 # but this requires to define the hash or range sharding
 
 # For testing compatibility, we log statements and execution plans 
---ysql_pg_conf_csv=shared_preload_libraries='auto_explain',log_statement='all',log_min_messages='error',log_connections='on',log_disconnection='on',auto_explain.log_min_duration=0,auto_explain.log_analyze=on,auto_explain.log_timing=on,auto_explain.log_nested_statements=on
+--ysql_pg_conf_csv=shared_preload_libraries='auto_explain',log_statement='all',log_min_messages='error',auto_explain.log_min_duration=0,auto_explain.log_analyze=on,auto_explain.log_timing=on,auto_explain.log_nested_statements=on
 
 # The following parameters gives the best compatibility with PostgreSQL
 
