@@ -1,0 +1,19 @@
+# https://github.com/upsidelab/spree_docker_template
+services:
+  yb:
+    build: https://github.com/FranckPachot/yb-pglike.git
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - 5432:5432
+  spree:
+    depends_on:
+      yb:
+       condition: service_healthy
+    image: spreecommerce/spree
+    ports:
+      - 3000:3000
+    environment:
+      DATABASE_URL: postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@yb/${DATABASE_NAME}?pool=${RAILS_MAX_THREADS}
+      RAILS_ENV: ${RAILS_ENV}
