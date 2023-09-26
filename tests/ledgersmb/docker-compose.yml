@@ -1,7 +1,10 @@
+# http://localhost:5762/setup.pl 
+
 services:
   postgres:
     build: https://github.com/FranckPachot/yb-pglike.git
-    #environment:
+    environment:
+       - YB_COLOCATION=false
     #  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-abc}
     #networks:
     #  - internal
