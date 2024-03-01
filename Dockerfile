@@ -1,4 +1,4 @@
-FROM docker.io/yugabytedb/yugabyte:latest
+FROM yugabytedb/yugabyte:latest
 COPY entrypoint.sh /usr/local/bin/
 COPY healthcheck.sh /usr/local/bin/
 COPY logs.sh /usr/local/bin/
