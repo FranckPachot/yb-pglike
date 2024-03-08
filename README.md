@@ -14,6 +14,37 @@ with:
     build: https://github.com/FranckPachot/yb-pglike.git
 ```
 
+⚠️ for some incompatibility reasons between `docker` and `git` I got this `build:` not working and had to build the image first and reference it as `image`. 
+Here is an example:
+```
+docker build -t yb-pglike .
+docker compose -f docker-compose-pgbench.yml up
+```
+with the following `docker-compose-pgbench.yml`:
+```
+services:
+  db:
+    image: yb-pglike
+    environment:
+      POSTGRES_DB: 'mydb'
+      POSTGRES_USER: 'myuser'
+      POSTGRES_PASSWORD: 'mypass'
+    ports:
+      - 5432:5432
+      - 15433:15433
+    restart: always
+  app:
+    image: postgres
+    environment:
+      PGDATABASE: 'mydb'
+      PGUSER: 'myuser'
+      PGPASSWORD: 'mypass'
+    command: bash -xc ' pgbench -i -h db && pgbench -h db -P 5 -T 60 '
+    depends_on:
+      db:
+        condition: service_healthy
+```
+
 ## Reason
 
 With this single-node image, the goal is to have the same behavior as PostgreSQL. There are some advantages: YugabyteDB doesn't need VACUUM and solves many related problems (see [Which PostgreSQL problems are solved with YugabyteDB](https://dev.to/yugabyte/which-postgresql-problems-are-solved-with-yugabytedb-2gm)). For production, simply add two additional replicas (same command with additional `--join=` with the fully qualified address of the first node) and it become resilient to any node failure. You can also use a managed sevice on 
