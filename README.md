@@ -5,6 +5,8 @@ This builds an image with [YugabyteDB](https://www.yugabyte.com/yugabytedb/) (re
 
 To run with it, replace the postgres image with this one.
 
+### if 'build:' works in docker compose:
+
 For example, in docker compose, replace 
 ```
     image: postgres
@@ -13,6 +15,8 @@ with:
 ```
     build: https://github.com/FranckPachot/yb-pglike.git
 ```
+
+### with pre-built image
 
 ⚠️ for some incompatibility reasons between `docker` and `git` I got this `build:` not working and had to build the image first and reference it as `image`. 
 Here is an example:

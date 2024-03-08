@@ -1,6 +1,6 @@
 services:
   db:
-    image: yb-pglike
+    image: pachot/yb-pglike
     environment:
       POSTGRES_DB: 'mydb'
       POSTGRES_USER: 'myuser'
