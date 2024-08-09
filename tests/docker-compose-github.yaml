@@ -3,9 +3,7 @@
 #
 services:
   db:
-    build:
-      context: https://github.com/FranckPachot/yb-pglike.git
-      no_cache: true
+    image: pachot/yb-pglike
     environment:
       POSTGRES_DB: 'mydb'
       POSTGRES_USER: 'myuser'
@@ -23,7 +21,7 @@ services:
       PGDATABASE: 'mydb'
       PGUSER: 'myuser'
       PGPASSWORD: 'mypass'
-    command: pgbench -i -h db && pgbench -h db
+    command: pgbench -i -h db && pgbench -h db -P 5
     depends_on:
       db:
         condition: service_healthy

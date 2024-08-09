@@ -1,0 +1,22 @@
+# DOMAIN=example.com docker stack deploy -c redmine.yml redmine
+
+version: '3.8'
+
+services:
+  web:
+    image: jodogne/orthanc-plugins:1.12.4
+    ports:
+      - "8080:8042"
+    volumes:
+     - ./orthanc.json:/etc/orthanc/orthanc.json
+    depends_on:
+      yb:
+        condition: service_healthy
+
+  yb:
+    build: ../..
+    environment:
+      - POSTGRES_DB=orthanc
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pgpassword
+
