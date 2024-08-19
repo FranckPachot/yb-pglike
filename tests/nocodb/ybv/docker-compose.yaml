@@ -48,14 +48,15 @@ services:
     image: yugabytedb/yb-voyager:1.7.2
     command : |
      bash -xc "
-     yb-voyager assess-migration --export-dir /var/tmp --start-clean=true --source-db-host pg --source-db-user ${PG_USER} --source-db-password ${PG_PASSWORD} --source-db-name ${PG_DBNAME} --source-db-schema public --source-db-type postgresql
+     yb-voyager assess-migration --export-dir /var/tmp --start-clean=true --source-db-host pg --source-db-user ${PG_USER} --source-db-password ${PG_PASSWORD} --source-db-name ${PG_DBNAME} --source-db-schema public --source-db-type postgresql --iops-capture-interval 0
      cat /var/tmp/assessment/reports/assessmentReport.json
      yb-voyager export schema    --export-dir /var/tmp --start-clean=true --source-db-host pg --source-db-user ${PG_USER} --source-db-password ${PG_PASSWORD} --source-db-name ${PG_DBNAME} --source-db-schema public --source-db-type postgresql
      yb-voyager analyze-schema   --export-dir /var/tmp
      cat /var/tmp/reports/schema_analysis_report.txt
-     yb-voyager import schema    --export-dir /var/tmp                    --target-db-host yb --target-db-user ${PG_USER} --target-db-password ${PG_PASSWORD} --target-db-name ${PG_DBNAME} --target-db-schema public 
+     yb-voyager import schema    --export-dir /var/tmp                    --target-db-host yb --target-db-user ${PG_USER} --target-db-password ${PG_PASSWORD} --target-db-name ${PG_DBNAME} --target-db-schema public
      yb-voyager export data      --export-dir /var/tmp --start-clean=true --source-db-host pg --source-db-user ${PG_USER} --source-db-password ${PG_PASSWORD} --source-db-name ${PG_DBNAME} --source-db-schema public --source-db-type postgresql
-     yb-voyager import data      --export-dir /var/tmp                    --target-db-host yb --target-db-user ${PG_USER} --target-db-password ${PG_PASSWORD} --target-db-name ${PG_DBNAME} 
+     yb-voyager import data      --export-dir /var/tmp                    --target-db-host yb --target-db-user ${PG_USER} --target-db-password ${PG_PASSWORD} --target-db-name ${PG_DBNAME}
+     PGPASSWORD=${PG_PASSWORD} psql -h yb -p 5433 -U ${PG_USER} -c 'analyze' ${PG_DBNAME}
      " 2>&1
     environment:
       - CONTROL_PLANE_TYPE=yugabyted
