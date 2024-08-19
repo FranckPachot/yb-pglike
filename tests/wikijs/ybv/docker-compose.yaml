@@ -1,0 +1,62 @@
+services:
+  app_pg:
+    image: requarks/wiki:${VERSION:-2}
+    environment:
+      - DB_TYPE=postgres
+      - DB_HOST=${PG_HOST}
+      - DB_PORT=${PG_PORT}
+      - DB_USER=${PG_USER}
+      - DB_PASS=${PG_PASSWORD}
+      - DB_NAME=${PG_DBNAME}
+    ports:
+      - "3000:3000"
+    depends_on:
+      yb:
+        condition: service_healthy
+  pg:
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=${PG_DBNAME}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+    healthcheck:
+      interval: 3s
+      timeout: 3s
+      test: PGPASSWORD=${PG_PASSWORD} pg_isready -h pg -U ${PG_USER} -d ${PG_DBNAME}
+  yb:
+    image: yugabytedb/yugabyte:2024.1.1.0-b137
+    command: bash -c 'rm -rf /tmp/.yb.* ; yugabyted start --enable_pg_parity_tech_preview --background=false --tserver_flags=ysql_colocate_database_by_default=true'
+    ports: 
+      - "7000:7000"
+    environment:
+      - YSQL_DB=${PG_DBNAME}
+      - YSQL_USER=${PG_USER}
+      - YSQL_PASSWORD=${PG_PASSWORD}
+    healthcheck:
+      interval: 15s
+      timeout: 5s
+      test: postgres/bin/pg_isready -h yb -p 5433
+  migrate:
+    deploy:
+     replicas: 0
+    image: yugabytedb/yb-voyager:1.7.2
+    command : |
+     bash -xc "
+     yb-voyager assess-migration --export-dir /var/tmp --start-clean=true --source-db-host pg --source-db-user ${PG_USER} --source-db-password ${PG_PASSWORD} --source-db-name ${PG_DBNAME} --source-db-schema public --source-db-type postgresql --iops-capture-interval 0
+     cat /var/tmp/assessment/reports/assessmentReport.json
+     yb-voyager export schema    --export-dir /var/tmp --start-clean=true --source-db-host pg --source-db-user ${PG_USER} --source-db-password ${PG_PASSWORD} --source-db-name ${PG_DBNAME} --source-db-schema public --source-db-type postgresql
+     yb-voyager analyze-schema   --export-dir /var/tmp
+     cat /var/tmp/reports/schema_analysis_report.txt
+     yb-voyager import schema    --export-dir /var/tmp                    --target-db-host yb --target-db-user ${PG_USER} --target-db-password ${PG_PASSWORD} --target-db-name ${PG_DBNAME} --target-db-schema public 
+     yb-voyager export data      --export-dir /var/tmp --start-clean=true --source-db-host pg --source-db-user ${PG_USER} --source-db-password ${PG_PASSWORD} --source-db-name ${PG_DBNAME} --source-db-schema public --source-db-type postgresql
+     yb-voyager import data      --export-dir /var/tmp                    --target-db-host yb --target-db-user ${PG_USER} --target-db-password ${PG_PASSWORD} --target-db-name ${PG_DBNAME} 
+     PGPASSWORD=${PG_PASSWORD} psql -h yb -p 5433 -U ${PG_USER} -c 'analyze' ${PG_DBNAME} 
+     " 2>&1
+    environment:
+      - CONTROL_PLANE_TYPE=yugabyted
+      - YUGABYTED_DB_CONN_STRING=postgresql://yugabyte:yugabyte@yb:5433
+    depends_on:
+      pg:
+        condition: service_healthy
+      yb:
+        condition: service_healthy
